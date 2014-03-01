@@ -1,5 +1,5 @@
 ﻿/****************************** Module Header ******************************\
-Module Name:  Program.cs
+Module Name:  Program.cs modified for testing
 Project:      CSSetDesktopWallpaper
 Copyright (c) Microsoft Corporation.
 
