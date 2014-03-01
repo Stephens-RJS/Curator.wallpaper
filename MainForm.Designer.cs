@@ -42,7 +42,7 @@
             this.pctPreview = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSetWallpaper = new System.Windows.Forms.Button();
-            this.wallpaperOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.wallpaperOpenFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
             this.SuspendLayout();
@@ -168,10 +168,10 @@
             this.btnSetWallpaper.UseVisualStyleBackColor = true;
             this.btnSetWallpaper.Click += new System.EventHandler(this.btnSetWallpaper_Click);
             // 
-            // wallpaperOpenFileDialog
-            // 
-            this.wallpaperOpenFileDialog.Filter = "\"All Picture Files |*.bmp;*.gif;*.jpg;*.png;*.tif\"";
-            this.wallpaperOpenFileDialog.Title = "Select Wallpaper";
+            // wallpaperOpenFolderDialog
+            // sets the description for the folder selected and puts the new folder button on the selection page
+            this.wallpaperOpenFolderDialog.Description ="Select folder with Picture Files |*.bmp;*.gif;*.jpg;*.png;*.tif\"";
+            this.wallpaperOpenFolderDialog.ShowNewFolderButton = true;
             // 
             // MainForm
             // 
@@ -213,7 +213,7 @@
         private System.Windows.Forms.PictureBox pctPreview;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSetWallpaper;
-        private System.Windows.Forms.OpenFileDialog wallpaperOpenFileDialog;
+        private System.Windows.Forms.FolderBrowserDialog wallpaperOpenFolderDialog;
     }
 }
 

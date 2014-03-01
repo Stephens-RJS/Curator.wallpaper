@@ -27,6 +27,8 @@ using Microsoft.Win32;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Drawing;
+using System.Windows.Forms;
 
 
 namespace CSSetDesktopWallpaper

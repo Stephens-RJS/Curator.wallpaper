@@ -23,6 +23,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using CSSetDesktopWallpaper.Properties;
+using System.IO;
+using System.Collections;
 
 
 namespace CSSetDesktopWallpaper
@@ -36,6 +38,8 @@ namespace CSSetDesktopWallpaper
 
 
         private string wallpaperFileName = null;
+        private string Folder_Path = null;
+        private string[] Files = null;
 
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -58,9 +62,17 @@ namespace CSSetDesktopWallpaper
 
         private void btnBrowseWallpaper_Click(object sender, EventArgs e)
         {
-            if (DialogResult.OK == wallpaperOpenFileDialog.ShowDialog())
+            if (DialogResult.OK == wallpaperOpenFolderDialog.ShowDialog())
             {
-                this.wallpaperFileName = wallpaperOpenFileDialog.FileName;
+                // Robert modified this to do folder stuff instead of file stuff
+                this.Folder_Path = wallpaperOpenFolderDialog.SelectedPath;
+                // set file name to first element in array files
+                this.Files = Directory.GetFiles(Folder_Path);
+                this.wallpaperFileName = Files[0];
+                // done modifying
+
+
+
                 this.tbWallpaperFileName.Text = this.wallpaperFileName;
 
                 // Preview the image in a picture box.
