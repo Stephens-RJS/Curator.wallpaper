@@ -68,40 +68,47 @@ namespace CSSetDesktopWallpaper
                 this.Folder_Path = wallpaperOpenFolderDialog.SelectedPath;
                 // set file name to first element in array files
                 this.Files = Directory.GetFiles(Folder_Path);
-                this.wallpaperFileName = Files[0];
-                // done modifying
+               
+                // Scott started editting here
+
+                    Random rnd = new Random();
+                    int number = rnd.Next( 0, Files.Length );
+
+                    this.wallpaperFileName = Files[number];
+                    
+                    // Robert and Scott done modifying
 
 
 
-                this.tbWallpaperFileName.Text = this.wallpaperFileName;
+                    this.tbWallpaperFileName.Text = this.wallpaperFileName;
 
-                // Preview the image in a picture box.
-                Image wallpaper = Image.FromFile(this.wallpaperFileName);
+                    // Preview the image in a picture box.
+                    Image wallpaper = Image.FromFile(this.wallpaperFileName);
 
-                if (wallpaper.Width < this.pctPreview.Width &&
-                    wallpaper.Height < this.pctPreview.Height)
-                {
-                    this.pctPreview.Image = wallpaper;
-                }
-                else
-                {
-                    float wallpaperRatio = (float)wallpaper.Width / (float)wallpaper.Height;
-                    float pctPreviewRatio = (float)pctPreview.Width / (float)pctPreview.Height;
-
-                    if (wallpaperRatio >= pctPreviewRatio)
+                    if (wallpaper.Width < this.pctPreview.Width &&
+                        wallpaper.Height < this.pctPreview.Height)
                     {
-                        this.pctPreview.Image = wallpaper.GetThumbnailImage(
-                            this.pctPreview.Width,
-                            (int)(this.pctPreview.Width / wallpaperRatio),
-                            null, IntPtr.Zero);
+                        this.pctPreview.Image = wallpaper;
                     }
                     else
                     {
-                        this.pctPreview.Image = wallpaper.GetThumbnailImage(
-                            (int)(this.pctPreview.Height * wallpaperRatio),
-                            this.pctPreview.Height,
-                            null, IntPtr.Zero);
-                    }
+                        float wallpaperRatio = (float)wallpaper.Width / (float)wallpaper.Height;
+                        float pctPreviewRatio = (float)pctPreview.Width / (float)pctPreview.Height;
+
+                        if (wallpaperRatio >= pctPreviewRatio)
+                        {
+                            this.pctPreview.Image = wallpaper.GetThumbnailImage(
+                                this.pctPreview.Width,
+                                (int)(this.pctPreview.Width / wallpaperRatio),
+                                null, IntPtr.Zero);
+                        }
+                        else
+                        {
+                            this.pctPreview.Image = wallpaper.GetThumbnailImage(
+                                (int)(this.pctPreview.Height * wallpaperRatio),
+                                this.pctPreview.Height,
+                                null, IntPtr.Zero);
+                        }
                 }
             }
         }
@@ -112,7 +119,7 @@ namespace CSSetDesktopWallpaper
             if (!String.IsNullOrEmpty(this.wallpaperFileName))
             {
                 Wallpaper.SetDesktopWallpaper(
-                    this.wallpaperFileName, 
+                    this.wallpaperFileName,
                     this.SelectedWallpaperStyle);
             }
         }
