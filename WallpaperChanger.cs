@@ -17,6 +17,7 @@ namespace Curator
     class WallpaperChanger
     {
         private string _path;
+        private int spot; // spot in array that the variables are cycling through
         static Random randGen;
 
         public WallpaperChanger()
@@ -38,7 +39,19 @@ namespace Curator
                     images.AddRange(System.IO.Directory.GetFiles(path, String.Format("*.{0}", filter), System.IO.SearchOption.AllDirectories));
                 }
 
-                string fileName = images[randGen.Next(0, images.Count)];
+                //string fileName = images[randGen.Next(0, images.Count)];
+                if (spot < 0)
+                {
+                    spot = 0;
+                }
+                    // sets spot = 0 if first time calling change wallpaper
+                else
+                {
+                    if (spot == images.Count - 1) { spot = 0; }
+                    else { spot++; }
+                }
+                // incraments spot if it is not about to go out of bounds. 
+                string fileName = images[spot];
 
                 // Temporary resizing method... essentially just preserving quality with Fit
 
