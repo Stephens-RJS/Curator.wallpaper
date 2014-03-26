@@ -50,6 +50,7 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationManager.cs" />
     <Compile Include="ConfigureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +65,8 @@
     <Compile Include="SettingsOwner.Designer.cs">
       <DependentUpon>SettingsOwner.cs</DependentUpon>
     </Compile>
+    <Compile Include="WallpaperChanger.cs" />
+    <Compile Include="WinAPI.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
